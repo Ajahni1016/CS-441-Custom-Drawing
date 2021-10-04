@@ -4,6 +4,7 @@ import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -22,15 +23,14 @@ public class CustomDrawing extends ApplicationAdapter {
 	public void create () {
 		batch = new SpriteBatch();
 		circleRenderer = new ShapeRenderer();
-		img = new Texture("badlogic.jpg");
 	}
 
 	@Override
 	public void render () {
-		Gdx.gl.glClearColor( 1, 0, 0, 1 );
+		Gdx.gl.glClearColor( 0, 0, 0, 1 );
 		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT);
-		x = x+=5;
-		y = y+=5;
+		x = x+1;
+		y = y+1;
 		//sprite.setPosition(x,y);
 		circleRenderer.begin(ShapeRenderer.ShapeType.Filled);
 		circleRenderer.circle(x, y, 50);

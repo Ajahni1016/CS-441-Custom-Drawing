@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.GL20;
+import java.util.Random;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -18,10 +19,15 @@ public class CustomDrawing extends ApplicationAdapter {
 	ShapeRenderer circleRenderer;
 	double x, y=50;
 	float dx, dy;
+	Random rand = new Random();
 	float w, h;
 	float ticks=0;
 	int dir_x = 0; //0 = forwards, 1 = backwards
 	int dir_y = 0; //0 = forwards, 1 = backwards
+	int red = 0;
+	int green = 0;
+	int blue = 0;
+	int rad=50;
 
 	@Override
 	public void create () {
@@ -32,19 +38,39 @@ public class CustomDrawing extends ApplicationAdapter {
 	@Override
 	public void render () {
 		ticks++;
-		Gdx.gl.glClearColor( 0, 0, 0, 1 );
+		Gdx.gl.glClearColor( 12/255f, 2/255f, 92/255f, 1 );
 		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT);
 		if(x >=w ){
 			dir_x = 1;
+			rad = rand.nextInt((150 - 20) + 1) + 20;
+			red = rand.nextInt(255);
+			blue = rand.nextInt(255);
+			green = rand.nextInt(255);
+			circleRenderer.setColor(red/255f,green/255f,blue/255f,1);
 		}
 		else if(x<=0){
 			dir_x = 0;
+			rad = rand.nextInt((150 - 20) + 1) + 20;
+			red = rand.nextInt(255);
+			blue = rand.nextInt(255);
+			green = rand.nextInt(255);
+			circleRenderer.setColor(red/255f,green/255f,blue/255f,1);
 		}
 		if(y >=h ){
 			dir_y = 1;
+			rad = rand.nextInt((150 - 20) + 1) + 20;
+			red = rand.nextInt(255);
+			blue = rand.nextInt(255);
+			green = rand.nextInt(255);
+			circleRenderer.setColor(red/255f,green/255f,blue/255f,1);
 		}
 		else if(y<=0){
 			dir_y = 0;
+			rad = rand.nextInt((150 - 20) + 1) + 20;
+			red = rand.nextInt(255);
+			blue = rand.nextInt(255);
+			green = rand.nextInt(255);
+			circleRenderer.setColor(red/255f,green/255f,blue/255f,1);
 		}
 
 		if(dir_x == 0){
@@ -60,9 +86,8 @@ public class CustomDrawing extends ApplicationAdapter {
 		else{
 			y-=20;
 		}
-		//sprite.setPosition(x,y);
 		circleRenderer.begin(ShapeRenderer.ShapeType.Filled);
-		circleRenderer.circle((float)x, (float)y, 50);
+		circleRenderer.circle((float)x, (float)y, rad);
 		circleRenderer.end();
 
 	}

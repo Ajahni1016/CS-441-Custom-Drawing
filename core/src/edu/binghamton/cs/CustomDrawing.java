@@ -1,6 +1,7 @@
 package edu.binghamton.cs; //Justin
 
 import com.badlogic.gdx.ApplicationAdapter;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,7 +14,7 @@ public class CustomDrawing extends ApplicationAdapter {
 	SpriteBatch batch;
 	Texture img;
 	ShapeRenderer circleRenderer;
-	float x, y;
+	float x, y=50;
 	float dx, dy;
 	float w, h;
 
@@ -26,8 +27,10 @@ public class CustomDrawing extends ApplicationAdapter {
 
 	@Override
 	public void render () {
-		x = 552;
-		y = 300;
+		Gdx.gl.glClearColor( 1, 0, 0, 1 );
+		Gdx.gl.glClear( GL20.GL_COLOR_BUFFER_BIT);
+		x = x+=5;
+		y = y+=5;
 		//sprite.setPosition(x,y);
 		circleRenderer.begin(ShapeRenderer.ShapeType.Filled);
 		circleRenderer.circle(x, y, 50);
